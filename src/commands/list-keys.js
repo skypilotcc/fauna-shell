@@ -38,7 +38,8 @@ function buildTable(res) {
   const table = getTable()
   res.data.sort(compareByDBName)
   res.data.forEach(function (el) {
-    table.push([el.ref.id, el.database.id, el.role])
+    const databaseId = el.database && el.database.id ? el.database.id : '[root database]'
+    table.push([el.ref.id, databaseId, el.role])
   })
   return table
 }
